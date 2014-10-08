@@ -1,0 +1,126 @@
+def skipCoverage = project.hasProperty('skipCoverage')
+
+import java.text.SimpleDateFormat
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'jacoco'
+apply plugin: 'nexus'
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.7'
+  }
+}
+
+def springBootVersion = '1.1.7.RELEASE'
+def springVersion = '4.0.7.RELEASE'
+
+repositories {
+  jcenter()
+}
+
+sourceCompatibility = project.javaVersion
+targetCompatibility = project.javaVersion
+
+Date buildTimeAndDate = new Date()
+ext {
+  buildDate = new SimpleDateFormat('dd-MMM-yyyy').format(buildTimeAndDate)
+  buildTime = new SimpleDateFormat('hh:mm aa').format(buildTimeAndDate)
+}
+
+dependencies {
+  compile "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+  compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+  compile("org.springframework:spring-core:${springVersion}") {
+    exclude module: 'commons-logging'
+  }
+
+  compile 'de.neuland-bfi:spring-jade4j:0.4.0'
+
+  testCompile 'junit:junit:4.11'
+  testCompile "org.springframework:spring-test:${springVersion}"
+}
+
+def jarManifestAttributes = [
+    'Built-By': System.properties['user.name'],
+    'Created-By': System.properties['java.version'] + ' (' + System.properties['java.vendor'] + ' ' + System.getProperty("java.vm.version") + ")",
+    'Build-Date': buildDate,
+    'Build-Time': buildTime ]
+
+jar {
+  manifest {
+    attributes(jarManifestAttributes)
+  }
+}
+
+modifyPom {
+  project {
+    name project.name
+    description project.pomDescription
+    url 'https://github.com/domix/spring-boot-starter-jade4j'
+    inceptionYear '2014'
+
+    groupId project.groupId
+    artifactId project.artifactId
+    version project.version
+
+    scm {
+      url 'scm:git:git@github.com:domix/spring-boot-starter-jade4j.git'
+      connection 'scm:git:git@github.com:domix/spring-boot-starter-jade4j.git'
+      developerConnection 'scm:git:git@github.com:domix/spring-boot-starter-jade4j.git'
+    }
+
+    licenses {
+      license {
+        name 'The Apache Software License, Version 2.0'
+        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+        distribution 'repo'
+      }
+    }
+
+    developers {
+      developer {
+        id 'domix'
+        name 'Domingo Suarez Torres'
+        email 'domingo.suarez@gmail.com'
+        roles {
+          role 'Developer'
+        }
+      }
+    }
+  }
+}
+
+nexus {
+  attachSources = true
+  attachTests = true
+  attachJavadoc = true
+  sign = false
+  repositoryUrl = 'http://repo.sindica.to/nexus/content/repositories/releases/'
+  snapshotRepositoryUrl = 'http://repo.sindica.to/nexus/content/repositories/snapshots/'
+}
+
+test {
+  maxParallelForks = 4
+  forkEvery = 3
+
+  if(!skipCoverage) {
+    jacoco {
+      //excludes = ['**/*ServiceSpec']
+    }
+  }
+
+}
+
+if(!skipCoverage) {
+  jacocoTestReport {
+    reports {
+      html.destination "${buildDir}/reports/coverage"
+    }
+  }
+}
