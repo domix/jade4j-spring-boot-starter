@@ -122,6 +122,24 @@ public class Util {
 ----
 <1> The new id
 
+== Configuration
+
+The following settings are available:
+
+[format="csv", options="header"]
+|===
+Setting key, Type, Default value
+spring.jade4j.checkTemplateLocation, Boolean, true
+spring.jade4j.prefix, String, 'classpath:/templates/'
+spring.jade4j.suffix, String, '.jade'
+spring.jade4j.encoding, String, 'UTF-8'
+spring.jade4j.caching, Boolean, true
+spring.jade4j.prettyPrint, Boolean, false
+spring.jade4j.mode, String, 'HTML'
+spring.jade4j.contentType, String, 'text/html'
+spring.jade4j.resolver.order, Integer, Ordered.LOWEST_PRECEDENCE - 1
+|===
+
 
 == Complete demo application
 
