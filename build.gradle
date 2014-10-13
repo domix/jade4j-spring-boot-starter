@@ -17,11 +17,11 @@ buildscript {
   }
 }
 
-def springBootVersion = '1.1.7.RELEASE'
-def springVersion = '4.0.7.RELEASE'
-
 repositories {
   jcenter()
+  maven {
+    url 'http://repo.springsource.org/milestone/'
+  }
 }
 
 sourceCompatibility = project.javaVersion

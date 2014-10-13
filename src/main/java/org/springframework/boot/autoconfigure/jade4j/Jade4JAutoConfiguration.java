@@ -20,7 +20,9 @@ import de.neuland.jade4j.Jade4J;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.spring.template.SpringTemplateLoader;
 import de.neuland.jade4j.spring.view.JadeViewResolver;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -31,15 +33,16 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.util.Assert;
-import org.springframework.web.servlet.ViewResolver;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.Servlet;
+import java.util.Map;
 
 /**
  * {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration Auto-configuration} for jade4j.
@@ -132,8 +135,31 @@ public class Jade4JAutoConfiguration {
       resolver.setViewNames(this.environment.getProperty("viewNames", String[].class));
       // This resolver acts as a fallback resolver (e.g. like a
       // InternalResourceViewResolver) so it needs to have low precedence
-      resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 1);
+      resolver.setOrder(this.environment.getProperty("resolver.order", Integer.class, Ordered.LOWEST_PRECEDENCE - 1));
       return resolver;
+    }
+
+    @Bean
+    public BeanPostProcessor jade4jBeanPostProcessor() {
+      return new BeanPostProcessor() {
+
+        @Override
+        public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+          return bean;
+        }
+
+        @Override
+        public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+          JadeHelper annotation = AnnotationUtils.findAnnotation(bean.getClass(), JadeHelper.class);
+          if (annotation != null) {
+            Map<String, Object> variables = jadeConfiguration.getSharedVariables();
+            variables.put(beanName, bean);
+            jadeConfiguration.setSharedVariables(variables);
+          }
+
+          return bean;
+        }
+      };
     }
 
 
