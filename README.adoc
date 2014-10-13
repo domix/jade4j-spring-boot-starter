@@ -76,7 +76,7 @@ Add the jade templates in the following directory
 Then you can add new Spring MVC controllers as usual
 
 == Helpers
-You can add https://github.com/neuland/jade4j#helpers[helpers] automatically using the annotation @JadeHelper
+You can add https://github.com/neuland/jade4j#helpers[helpers] automatically using the annotation https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/org/springframework/boot/autoconfigure/jade4j/JadeHelper.java[@JadeHelper]
 
 [source,java]
 ----
@@ -106,7 +106,7 @@ html
 
 
 === Customize the helper's name
-You can customize the helper's name using the JadeHelper annotation
+You can customize the helper's name using the https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/org/springframework/boot/autoconfigure/jade4j/JadeHelper.java[JadeHelper] annotation
 [source,java]
 ----
 package demo
