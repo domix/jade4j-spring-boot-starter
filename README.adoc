@@ -10,7 +10,7 @@ The usage is pretty straightforward as you can expect for any Starter.
 
 === Add Maven Repository
 `build.gradle`
-[source,java]
+[source,ruby]
 ----
 ...
 repositories {
@@ -27,7 +27,7 @@ repositories {
   ...
   <repositories>
     <repository>
-      <id>sindicato-snapshot</id>
+      <id>sindicato-repo-snapshot</id>
       <url>http://repo.sindica.to/nexus/content/repositories/snapshots/</url>
     </repository>
   </repositories>
@@ -37,7 +37,7 @@ repositories {
 
 === Add Maven dependency
 `build.gradle`
-[source,java]
+[source,ruby]
 ----
 ...
 dependencies {
@@ -62,6 +62,19 @@ dependencies {
 </project>
 ----
 
-=== Complete demo application
+=== Jade templates
+Add the jade templates in the following directory
+[indent=0]
+----
+  src
+  └── main
+      └── resources
+          └── templates
+              └── index.jade
+----
+
+Then you can add new Spring MVC controllers as usual
+
+== Complete demo application
 
 Please take a look into this https://github.com/domix/spring-boot-starter-jade4j-showcase[application] if you want to checkout a fully application.
