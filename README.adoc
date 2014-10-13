@@ -1,6 +1,63 @@
 = Spring Boot jade4j Starter image:http://jenkins.sindica.to/buildStatus/icon?job=spring-boot-starter-jade4j_test["Build Status", link="http://jenkins.sindica.to/job/spring-boot-starter-jade4j_test/"]
 
-This Starter provides you the minimal and required configuration to use http://jade-lang.com/[jade templates] as views templates in your Spring Boot application.
+This Starter provides you the minimal and required configuration to use http://jade-lang.com/[jade templates] as views in your Spring Boot application.
 
 Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4j] and https://github.com/neuland/spring-jade4j[spring-jade4j] libraries.
 
+== Usage
+
+The usage is pretty straightforward as you can expect for any Starter.
+
+=== Add Maven Repository
+`build.gradle`
+[source,java]
+----
+...
+repositories {
+   maven { url 'http://repo.sindica.to/nexus/content/repositories/snapshots/' }
+}
+...
+----
+
+
+`pom.xml`
+[source,xml]
+----
+<project>
+  ...
+  <repositories>
+    <repository>
+      <id>sindicato-snapshot</id>
+      <url>http://repo.sindica.to/nexus/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
+  ...
+</project>
+----
+
+=== Add Maven dependency
+`build.gradle`
+[source,java]
+----
+...
+dependencies {
+  compile "org.springframework.boot:spring-boot-starter-jade4j:0.1.0-SNAPSHOT"
+}
+...
+----
+
+
+`pom.xml`
+[source,xml]
+----
+<project>
+  ...
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jade4j</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>
+----
