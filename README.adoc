@@ -35,13 +35,14 @@ repositories {
 </project>
 ----
 
+:theversion: 0.1.0-SNAPSHOT
 === Add Maven dependency
 `build.gradle`
 [source,java]
 ----
 ...
 dependencies {
-  compile "org.springframework.boot:spring-boot-starter-jade4j:0.1.0-SNAPSHOT"
+  compile "org.springframework.boot:spring-boot-starter-jade4j:{theversion}"
 }
 ...
 ----
@@ -56,7 +57,7 @@ dependencies {
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jade4j</artifactId>
-      <version>0.1.0-SNAPSHOT</version>
+      <version>{theversion}</version>
     </dependency>
   </dependencies>
 </project>
