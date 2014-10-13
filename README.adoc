@@ -1,0 +1,6 @@
+= Spring Boot jade4j Starter image:http://jenkins.sindica.to/buildStatus/icon?job=spring-boot-starter-jade4j_test["Build Status", link="http://jenkins.sindica.to/job/spring-boot-starter-jade4j_test/"]
+
+This Starter provides you the minimal and required configuration to use http://jade-lang.com/[jade templates] as views templates in your Spring Boot application.
+
+Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4j] and https://github.com/neuland/spring-jade4j[spring-jade4j] libraries.
+
