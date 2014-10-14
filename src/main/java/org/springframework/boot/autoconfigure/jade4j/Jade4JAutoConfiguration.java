@@ -135,7 +135,7 @@ public class Jade4JAutoConfiguration {
       resolver.setViewNames(this.environment.getProperty("viewNames", String[].class));
       // This resolver acts as a fallback resolver (e.g. like a
       // InternalResourceViewResolver) so it needs to have low precedence
-      resolver.setOrder(this.environment.getProperty("resolver.order", Integer.class, Ordered.LOWEST_PRECEDENCE - 1));
+      resolver.setOrder(this.environment.getProperty("resolver.order", Integer.class, Ordered.LOWEST_PRECEDENCE - 50));
       return resolver;
     }
 

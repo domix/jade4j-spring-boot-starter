@@ -41,7 +41,7 @@ repositories {
 ----
 ...
 dependencies {
-  compile "org.springframework.boot:spring-boot-starter-jade4j:0.1.0-SNAPSHOT"
+  compile "org.springframework.boot:spring-boot-starter-jade4j:0.1.1-SNAPSHOT"
 }
 ...
 ----
@@ -56,7 +56,7 @@ dependencies {
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jade4j</artifactId>
-      <version>0.1.0-SNAPSHOT</version>
+      <version>0.1.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
@@ -122,6 +122,17 @@ public class Util {
 ----
 <1> The new id
 
+`template.jade`
+----
+html
+  head
+    title Hello
+  body
+    h
+    h1
+      #{myId.format(4)}
+----
+
 == Configuration
 
 The following settings are available:
@@ -137,7 +148,7 @@ spring.jade4j.caching, Boolean, true
 spring.jade4j.prettyPrint, Boolean, false
 spring.jade4j.mode, String, 'HTML'
 spring.jade4j.contentType, String, 'text/html'
-spring.jade4j.resolver.order, Integer, Ordered.LOWEST_PRECEDENCE - 1
+spring.jade4j.resolver.order, Integer, Ordered.LOWEST_PRECEDENCE - 50
 |===
 
 
