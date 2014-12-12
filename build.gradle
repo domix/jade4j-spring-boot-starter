@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 apply plugin: 'jacoco'
 apply plugin: 'nexus'
 
@@ -40,17 +41,17 @@ dependencies {
     exclude module: 'commons-logging'
   }
 
-  compile 'de.neuland-bfi:spring-jade4j:0.4.0'
+  compile 'de.neuland-bfi:spring-jade4j:0.4.2'
 
   testCompile 'junit:junit:4.11'
   testCompile "org.springframework:spring-test:${springVersion}"
 }
 
 def jarManifestAttributes = [
-    'Built-By': System.properties['user.name'],
-    'Created-By': System.properties['java.version'] + ' (' + System.properties['java.vendor'] + ' ' + System.getProperty("java.vm.version") + ")",
-    'Build-Date': buildDate,
-    'Build-Time': buildTime ]
+  'Built-By'  : System.properties['user.name'],
+  'Created-By': System.properties['java.version'] + ' (' + System.properties['java.vendor'] + ' ' + System.getProperty("java.vm.version") + ")",
+  'Build-Date': buildDate,
+  'Build-Time': buildTime]
 
 jar {
   manifest {
@@ -109,7 +110,7 @@ test {
   maxParallelForks = 4
   forkEvery = 3
 
-  if(!skipCoverage) {
+  if (!skipCoverage) {
     jacoco {
       //excludes = ['**/*ServiceSpec']
     }
@@ -117,10 +118,14 @@ test {
 
 }
 
-if(!skipCoverage) {
+if (!skipCoverage) {
   jacocoTestReport {
     reports {
       html.destination "${buildDir}/reports/coverage"
     }
   }
 }
+
+
+javadoc.options.links("http://docs.oracle.com/javase/7/docs/api/", "http://docs.spring.io/spring/docs/4.1.x/javadoc-api/", "http://docs.spring.io/spring-boot/docs/1.2.0.RELEASE/api/", "https://docs.oracle.com/javaee/5/api/")
+

@@ -163,7 +163,7 @@ public class Jade4JAutoConfigurationTests {
   }
 
   private Map<String, Object> params() {
-    HashMap<String, Object> result = new HashMap<>();
+    HashMap<String, Object> result = new HashMap<String, Object>();
     result.put("user", "domix");
     return result;
   }

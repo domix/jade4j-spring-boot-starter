@@ -41,7 +41,7 @@ repositories {
 ----
 ...
 dependencies {
-  compile "org.springframework.boot:spring-boot-starter-jade4j:0.1.1-SNAPSHOT"
+  compile "org.springframework.boot:spring-boot-starter-jade4j:0.1.2-SNAPSHOT"
 }
 ...
 ----
@@ -56,7 +56,7 @@ dependencies {
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jade4j</artifactId>
-      <version>0.1.1-SNAPSHOT</version>
+      <version>0.1.2-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
