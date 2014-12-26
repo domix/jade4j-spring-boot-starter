@@ -1,8 +1,14 @@
-= image:https://dl.dropboxusercontent.com/u/3942208/spring-jade-100x100.png["Logo"] Spring Boot jade4j Starter image:https://travis-ci.org/domix/spring-boot-starter-jade4j.svg?branch=master["Build Status", link="https://travis-ci.org/domix/spring-boot-starter-jade4j"] image:https://img.shields.io/coveralls/domix/spring-boot-starter-jade4j.svg["Coverage Status", link="https://coveralls.io/r/domix/spring-boot-starter-jade4j"]
+= Spring Boot jade4j Starter
 
+image:https://dl.dropboxusercontent.com/u/3942208/spring-jade-100x100.png[Logo]
+
+image:http://img.shields.io/travis/domix/spring-boot-starter-jade4j/master.svg?style=flat["Build Status", link="https://travis-ci.org/domix/spring-boot-starter-jade4j"]
+image:http://img.shields.io/coveralls/domix/spring-boot-starter-jade4j/master.svg?style=flat["Coverage Status", link="https://coveralls.io/r/domix/spring-boot-starter-jade4j"]
+image:http://img.shields.io/badge/license-ASF2-blue.svg?style=flat["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
 image:https://api.bintray.com/packages/domix/oss/spring-boot-starter-jade4j/images/download.svg["Download", link="https://bintray.com/domix/oss/spring-boot-starter-jade4j/_latestVersion"]
 image:https://badges.gitter.im/Join%20Chat.svg["Gitter", link="https://gitter.im/domix/spring-boot-starter-jade4j?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
 
+---
 
 This Starter provides you the minimal and required configuration to use http://jade-lang.com/[jade templates] as views in your Spring Boot application.
 
