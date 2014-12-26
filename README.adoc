@@ -21,9 +21,9 @@ image:https://img.shields.io/badge/Spring%20Boot-1.2.0-green.svg?style=flat&["Sp
 
 == GitHub
 
-image:https://img.shields.io/github/forks/domix/spring-boot-starter-jade4j.svg?style=flat[Demo]
-image:https://img.shields.io/github/release/domix/spring-boot-starter-jade4j.svg?style=flat[Demo]
-image:https://img.shields.io/github/issues/domix/spring-boot-starter-jade4j.svg?style=flat[Demo]
+image:https://img.shields.io/github/forks/domix/spring-boot-starter-jade4j.svg?style=flat["Forks", link="https://github.com/domix/spring-boot-starter-jade4j/network"]
+image:https://img.shields.io/github/release/domix/spring-boot-starter-jade4j.svg?style=flat["Release", link="https://github.com/domix/spring-boot-starter-jade4j/releases"]
+image:https://img.shields.io/github/issues/domix/spring-boot-starter-jade4j.svg?style=flat["Issues", link="https://github.com/domix/spring-boot-starter-jade4j/issues"]
 
 ---
 
