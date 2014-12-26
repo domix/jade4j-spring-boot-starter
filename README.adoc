@@ -10,6 +10,10 @@ image:https://badges.gitter.im/Join%20Chat.svg["Gitter", link="https://gitter.im
 
 ---
 
+This Starter provides you the minimal and required configuration to use http://jade-lang.com/[jade templates] as views in your Spring Boot application.
+
+Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4j] and https://github.com/neuland/spring-jade4j[spring-jade4j] libraries.
+
 == Environment
 
 image:https://img.shields.io/badge/JDK-7.0+-F30000.svg?style=flat["JDK", link="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html"]
@@ -22,10 +26,6 @@ image:https://img.shields.io/github/release/domix/spring-boot-starter-jade4j.svg
 image:https://img.shields.io/github/issues/domix/spring-boot-starter-jade4j.svg?style=flat[Demo]
 
 ---
-
-This Starter provides you the minimal and required configuration to use http://jade-lang.com/[jade templates] as views in your Spring Boot application.
-
-Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4j] and https://github.com/neuland/spring-jade4j[spring-jade4j] libraries.
 
 == Usage
 
