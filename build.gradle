@@ -1,12 +1,4 @@
-def skipCoverage = project.hasProperty('skipCoverage')
-
 import java.text.SimpleDateFormat
-
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'jacoco'
-apply plugin: 'nexus'
 
 buildscript {
   repositories {
@@ -14,9 +6,18 @@ buildscript {
   }
 
   dependencies {
-    classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.7'
+    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
   }
 }
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 repositories {
   jcenter()
@@ -24,6 +25,9 @@ repositories {
     url 'http://repo.springsource.org/milestone/'
   }
 }
+
+version = project.version
+group = project.group
 
 sourceCompatibility = project.javaVersion
 targetCompatibility = project.javaVersion
@@ -59,72 +63,88 @@ jar {
   }
 }
 
-modifyPom {
-  project {
-    name project.name
-    description project.pomDescription
-    url 'https://github.com/domix/spring-boot-starter-jade4j'
-    inceptionYear '2014'
+task sourcesJar(type: Jar, dependsOn: classes) {
+  classifier = 'sources'
+  from sourceSets.main.allSource
+}
 
-    groupId project.groupId
-    artifactId project.artifactId
-    version project.version
+artifacts {
+  archives sourcesJar
+}
 
-    scm {
-      url 'scm:git:git@github.com:domix/spring-boot-starter-jade4j.git'
-      connection 'scm:git:git@github.com:domix/spring-boot-starter-jade4j.git'
-      developerConnection 'scm:git:git@github.com:domix/spring-boot-starter-jade4j.git'
-    }
+jacocoTestReport {
+  reports {
+    xml.enabled = true // coveralls plugin depends on xml format report
+    html.enabled = true
+  }
+}
 
-    licenses {
-      license {
-        name 'The Apache Software License, Version 2.0'
-        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-        distribution 'repo'
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
+      artifact sourcesJar
+
+      pom.withXml {
+        def root = asNode()
+        root.appendNode('name', project.name)
+        root.appendNode('description', project.description)
+        root.appendNode('url', 'https://github.com/domix/spring-boot-starter-jade4j')
+        root.appendNode('inceptionYear', '2014')
+
+        def scm = root.appendNode('scm')
+        scm.appendNode('url', 'https://github.com/domix/spring-boot-starter-jade4j')
+        scm.appendNode('connection', 'scm:https://domix@github.com/domix/spring-boot-starter-jade4j.git')
+        scm.appendNode('developerConnection', 'scm:git@github.com:domix/spring-boot-starter-jade4j.git')
+
+        def license = root.appendNode('licenses').appendNode('license')
+        license.appendNode('name', 'The Apache Software License, Version 2.0')
+        license.appendNode('url', 'http://www.apache.org/licenses/LICENSE-2.0.txt')
+        license.appendNode('distribution', 'repo')
+
+        def developers = root.appendNode('developers')
+        def domix = developers.appendNode('developer')
+        domix.appendNode('id', 'domix')
+        domix.appendNode('name', 'Domingo Suarez Torres')
+        domix.appendNode('email', 'domingo.suarez@gmail.com')
       }
     }
+  }
+}
 
-    developers {
-      developer {
-        id 'domix'
-        name 'Domingo Suarez Torres'
-        email 'domingo.suarez@gmail.com'
-        roles {
-          role 'Developer'
-        }
+bintray {
+  user = project.hasProperty('bintray_user') ? bintray_user : ''
+  key = project.hasProperty('bintray_api_key') ? bintray_api_key : ''
+
+  publications = ['mavenJava']
+  dryRun = false //Whether to run this as dry-run, without deploying
+  publish = true //If version should be auto published after an upload
+  pkg {
+    repo = 'oss'
+    userOrg = 'domix'
+    name = project.name
+    desc = project.description
+    websiteUrl = 'https://github.com/domix/spring-boot-starter-jade4j'
+    issueTrackerUrl = 'https://github.com/domix/spring-boot-starter-jade4j/issues'
+    vcsUrl = 'https://github.com/domix/spring-boot-starter-jade4j.git'
+    licenses = ['Apache-2.0']
+    labels = ['spring-boot', 'jade', 'starter', 'spring', 'spring-mvc']
+    publicDownloadNumbers = true
+    attributes = ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee']
+    //Optional version descriptor
+    version {
+      name = project.version
+      desc = project.description
+      mavenCentralSync {
+        sync = false
+        user = ''
+        password = ''
+        close = '1'
       }
     }
   }
 }
 
-nexus {
-  attachSources = true
-  attachTests = true
-  attachJavadoc = true
-  sign = false
-  repositoryUrl = 'http://repo.sindica.to/nexus/content/repositories/releases/'
-  snapshotRepositoryUrl = 'http://repo.sindica.to/nexus/content/repositories/snapshots/'
-}
-
-test {
-  maxParallelForks = 4
-  forkEvery = 3
-
-  if (!skipCoverage) {
-    jacoco {
-      //excludes = ['**/*ServiceSpec']
-    }
-  }
-
-}
-
-if (!skipCoverage) {
-  jacocoTestReport {
-    reports {
-      html.destination "${buildDir}/reports/coverage"
-    }
-  }
-}
 
 
 javadoc.options.links("http://docs.oracle.com/javase/7/docs/api/", "http://docs.spring.io/spring/docs/4.1.x/javadoc-api/", "http://docs.spring.io/spring-boot/docs/1.2.0.RELEASE/api/", "https://docs.oracle.com/javaee/5/api/")
