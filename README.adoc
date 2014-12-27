@@ -19,11 +19,15 @@ Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4
 image:https://img.shields.io/badge/JDK-7.0+-F30000.svg?style=flat["JDK", link="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html"]
 image:https://img.shields.io/badge/Spring%20Boot-1.2.0-green.svg?style=flat&["Spring Boot", link="http://docs.spring.io/spring-boot/docs/1.2.0.RELEASE/reference/htmlsingle/"]
 
-== GitHub
+== GitHub, Factoids and Stats
 
 image:https://img.shields.io/github/forks/domix/spring-boot-starter-jade4j.svg?style=flat["Forks", link="https://github.com/domix/spring-boot-starter-jade4j/network"]
 image:https://img.shields.io/github/release/domix/spring-boot-starter-jade4j.svg?style=flat["Release", link="https://github.com/domix/spring-boot-starter-jade4j/releases"]
 image:https://img.shields.io/github/issues/domix/spring-boot-starter-jade4j.svg?style=flat["Issues", link="https://github.com/domix/spring-boot-starter-jade4j/issues"]
+
+++++
+<script type="text/javascript" src="http://www.openhub.net/p/721264/widgets/project_basic_stats.js"></script>
+++++
 
 ---
 
