@@ -25,6 +25,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.boot.autoconfigure.PropertyPlaceholderAutoConfiguration;
+import org.springframework.boot.autoconfigure.jade4j.support.TestConfig;
 import org.springframework.boot.test.EnvironmentTestUtils;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -142,6 +143,21 @@ public class Jade4JAutoConfigurationTests {
     assertTrue("Wrong result: " + result, result.contains("<h2>With user</h2>"));
     context.close();
   }
+
+
+  @Test
+  public void createLayoutFromConfigClass_withHelper() throws Exception {
+    EnvironmentTestUtils.addEnvironment(this.context, "spring.jade4j.mode:XHTML");
+    this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class, TestConfig.class);
+    this.context.refresh();
+    JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
+    JadeTemplate template = engine.getTemplate("demo_withHelper.jade");
+    String result = engine.renderTemplate(template, engine.getSharedVariables());
+    String expected = "<html><head><title>Jade</title></head><body><h1>Jade - Template engine</h1></body></html>";
+
+    assertEquals(expected, result);
+  }
+
 
   @Test
   @Ignore
