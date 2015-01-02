@@ -1,4 +1,15 @@
 
+0.1.4.2 / 2015-01-02
+==================
+
+  * sign files
+  * trying to optimize build time
+  * added factories files to ignore
+  * fixed license header
+  * added more jdks to test in
+  * fixes javadoc
+  * improved docs
+
 0.1.4 / 2014-12-26
 ==================
 
