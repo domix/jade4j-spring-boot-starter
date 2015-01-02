@@ -166,6 +166,10 @@ bintray {
     version {
       name = project.version
       desc = project.description
+      gpg {
+        sign = project.hasProperty('gpg_passphrase')
+        passphrase = project.hasProperty('gpg_passphrase') ? gpg_passphrase : ''
+      }
       mavenCentralSync {
         sync = false
         user = ''
