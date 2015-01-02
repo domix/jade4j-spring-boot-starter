@@ -24,8 +24,9 @@
   * Added Gitter badge
   * upgraded to Spring Boot 1.2.0.RELEASE
 
-0.1.1 / 2014-10-26 
+0.1.1 / 2014-10-26
 ==================
+
   * setting default viewResolver order to
   * added link to JadeHelper annotation
   * added configuration setting in docs
