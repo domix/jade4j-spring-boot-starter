@@ -36,32 +36,6 @@ image:https://img.shields.io/github/issues/domix/spring-boot-starter-jade4j.svg?
 
 The usage is pretty straightforward as you can expect for any Starter.
 
-=== Add Maven Repository
-`build.gradle`
-[source,ruby]
-----
-...
-repositories {
-   jcenter()
-}
-...
-----
-
-
-`pom.xml`
-[source,xml]
-----
-<project>
-  ...
-  <repositories>
-    <repository>
-      <id>sindicato-repo-snapshot</id>
-      <url>http://repo.sindica.to/nexus/content/repositories/snapshots/</url>
-    </repository>
-  </repositories>
-  ...
-</project>
-----
 
 === Add Maven dependency
 `build.gradle`
@@ -69,7 +43,7 @@ repositories {
 ----
 ...
 dependencies {
-  compile "con.domingosuarez.boot:spring-boot-starter-jade4j:0.1.2-SNAPSHOT"
+  compile "com.domingosuarez.boot:spring-boot-starter-jade4j:0.1.2-SNAPSHOT"
 }
 ...
 ----
@@ -110,9 +84,9 @@ You can add https://github.com/neuland/jade4j#helpers[helpers] automatically usi
 
 [source,java]
 ----
-package demo
+package demo;
 
-import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper
+import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper;
 
 @JadeHelper
 public class Util {
@@ -139,9 +113,9 @@ html
 You can customize the helper's name using the https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[JadeHelper] annotation
 [source,java]
 ----
-package demo
+package demo;
 
-import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper
+import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper;
 
 @JadeHelper("myId") // <1>
 public class Util {
