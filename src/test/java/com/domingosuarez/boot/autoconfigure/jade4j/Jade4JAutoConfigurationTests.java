@@ -14,9 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.boot.autoconfigure.jade4j;
+package com.domingosuarez.boot.autoconfigure.jade4j;
 
-import com.domingosuarez.boot.autoconfigure.jade4j.Jade4JAutoConfiguration;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.spring.view.JadeView;
 import de.neuland.jade4j.spring.view.JadeViewResolver;
@@ -26,7 +25,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.boot.autoconfigure.PropertyPlaceholderAutoConfiguration;
-import org.springframework.boot.autoconfigure.jade4j.support.TestConfig;
+import com.domingosuarez.boot.autoconfigure.jade4j.support.TestConfig;
 import org.springframework.boot.test.EnvironmentTestUtils;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.mock.web.MockHttpServletRequest;
