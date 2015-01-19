@@ -23,7 +23,7 @@ buildscript {
 
   dependencies {
     classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
+    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.1.0'
     //classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0'
   }
 }
@@ -60,7 +60,6 @@ ext {
 }
 
 dependencies {
-  compile "org.springframework.boot:spring-boot-starter:${springBootVersion}"
   compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
   compile("org.springframework:spring-core:${springVersion}") {
     exclude module: 'commons-logging'
@@ -89,8 +88,26 @@ task sourcesJar(type: Jar, dependsOn: classes) {
   from sourceSets.main.allSource
 }
 
+def javaApiUrl = 'http://docs.oracle.com/javase/1.7.0/docs/api/'
+def groovyApiUrl = 'http://groovy.codehaus.org/gapi/'
+
+tasks.withType(Javadoc) {
+    options.links(javaApiUrl, groovyApiUrl)
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+  tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+  }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
 artifacts {
-  archives sourcesJar
+  archives sourcesJar, javadocJar
 }
 
 jacocoTestReport {
@@ -115,13 +132,15 @@ publishing {
     mavenJava(MavenPublication) {
       from components.java
       artifact sourcesJar
+      artifact javadocJar
 
       pom.withXml {
         def root = asNode()
-        root.appendNode('name', project.name)
+        root.appendNode('name', project.pomName)
         root.appendNode('description', project.description)
         root.appendNode('url', 'https://github.com/domix/spring-boot-starter-jade4j')
         root.appendNode('inceptionYear', '2014')
+        root.appendNode('packaging', 'jar')
 
         def scm = root.appendNode('scm')
         scm.appendNode('url', 'https://github.com/domix/spring-boot-starter-jade4j')
@@ -138,6 +157,15 @@ publishing {
         domix.appendNode('id', 'domix')
         domix.appendNode('name', 'Domingo Suarez Torres')
         domix.appendNode('email', 'domingo.suarez@gmail.com')
+
+
+        root.dependencies.'*'.findAll() {
+          it.scope.text() == 'runtime' && project.configurations.compile.allDependencies.find { dep ->
+            dep.name == it.artifactId.text()
+          }
+        }.each() {
+          it.scope*.value = 'compile'
+        }
       }
     }
   }
@@ -151,7 +179,7 @@ bintray {
   dryRun = false //Whether to run this as dry-run, without deploying
   publish = true //If version should be auto published after an upload
   pkg {
-    repo = 'oss'
+    repo = 'spring-boot'
     userOrg = 'domix'
     name = project.name
     desc = project.description
@@ -182,5 +210,5 @@ bintray {
 
 
 
-javadoc.options.links("http://docs.oracle.com/javase/7/docs/api/", "http://docs.spring.io/spring/docs/4.1.x/javadoc-api/", "http://docs.spring.io/spring-boot/docs/1.2.0.RELEASE/api/", "https://docs.oracle.com/javaee/5/api/")
+javadoc.options.links("http://docs.oracle.com/javase/7/docs/api/", "http://docs.spring.io/spring/docs/4.1.x/javadoc-api/", "http://docs.spring.io/spring-boot/docs/${springBootVersion}/api/", "https://docs.oracle.com/javaee/5/api/")
 
