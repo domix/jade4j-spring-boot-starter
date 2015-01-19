@@ -16,7 +16,7 @@
  */
 package org.springframework.boot.autoconfigure.jade4j.support;
 
-import org.springframework.boot.autoconfigure.jade4j.JadeHelper;
+import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper;
 
 /**
  * Created by domix on 12/26/14.

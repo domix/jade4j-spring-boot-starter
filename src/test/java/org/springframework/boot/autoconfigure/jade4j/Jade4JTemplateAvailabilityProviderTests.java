@@ -16,6 +16,7 @@
  */
 package org.springframework.boot.autoconfigure.jade4j;
 
+import com.domingosuarez.boot.autoconfigure.jade4j.Jade4JTemplateAvailabilityProvider;
 import org.junit.Test;
 import org.springframework.boot.autoconfigure.template.TemplateAvailabilityProvider;
 import org.springframework.core.io.DefaultResourceLoader;
@@ -26,7 +27,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests for {@link Jade4JTemplateAvailabilityProvider}.
+ * Tests for {@link com.domingosuarez.boot.autoconfigure.jade4j.Jade4JTemplateAvailabilityProvider}.
  *
  * @author Domingo Suarez Torres
  */

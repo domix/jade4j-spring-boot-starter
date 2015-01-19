@@ -16,6 +16,7 @@
  */
 package org.springframework.boot.autoconfigure.jade4j;
 
+import com.domingosuarez.boot.autoconfigure.jade4j.Jade4JAutoConfiguration;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.spring.view.JadeView;
 import de.neuland.jade4j.spring.view.JadeViewResolver;

@@ -69,7 +69,7 @@ repositories {
 ----
 ...
 dependencies {
-  compile "org.springframework.boot:spring-boot-starter-jade4j:0.1.2-SNAPSHOT"
+  compile "con.domingosuarez.boot:spring-boot-starter-jade4j:0.1.2-SNAPSHOT"
 }
 ...
 ----
@@ -82,7 +82,7 @@ dependencies {
   ...
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
+      <groupId>com.domingosuarez.boot</groupId>
       <artifactId>spring-boot-starter-jade4j</artifactId>
       <version>0.1.2-SNAPSHOT</version>
     </dependency>
@@ -106,13 +106,13 @@ Then you can add new Spring MVC controllers as usual
 ---
 
 == Helpers
-You can add https://github.com/neuland/jade4j#helpers[helpers] automatically using the annotation https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/org/springframework/boot/autoconfigure/jade4j/JadeHelper.java[@JadeHelper]
+You can add https://github.com/neuland/jade4j#helpers[helpers] automatically using the annotation https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[@JadeHelper]
 
 [source,java]
 ----
 package demo
 
-import org.springframework.boot.autoconfigure.jade4j.JadeHelper
+import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper
 
 @JadeHelper
 public class Util {
@@ -136,12 +136,12 @@ html
 
 
 === Customize the helper's name
-You can customize the helper's name using the https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/org/springframework/boot/autoconfigure/jade4j/JadeHelper.java[JadeHelper] annotation
+You can customize the helper's name using the https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[JadeHelper] annotation
 [source,java]
 ----
 package demo
 
-import org.springframework.boot.autoconfigure.jade4j.JadeHelper
+import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper
 
 @JadeHelper("myId") // <1>
 public class Util {

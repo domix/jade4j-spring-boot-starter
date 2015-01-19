@@ -14,8 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.boot.autoconfigure.jade4j;
+package com.domingosuarez.boot.autoconfigure.jade4j;
 
+import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper;
 import de.neuland.jade4j.Jade4J;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.spring.template.SpringTemplateLoader;
