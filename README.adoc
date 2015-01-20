@@ -5,7 +5,6 @@ image:https://dl.dropboxusercontent.com/u/3942208/spring-jade-100x100.png[Logo]
 image:https://img.shields.io/travis/domix/spring-boot-starter-jade4j/master.svg?style=flat["Build Status", link="https://travis-ci.org/domix/spring-boot-starter-jade4j"]
 image:https://img.shields.io/coveralls/domix/spring-boot-starter-jade4j/master.svg?style=flat["Coverage Status", link="https://coveralls.io/r/domix/spring-boot-starter-jade4j"]
 image:https://img.shields.io/badge/license-ASF2-blue.svg?style=flat["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
-image:https://api.bintray.com/packages/domix/spring-boot/spring-boot-starter-jade4j/images/download.svg["Download", link="https://bintray.com/domix/spring-boot/spring-boot-starter-jade4j/_latestVersion"]
 image:https://badges.gitter.im/Join%20Chat.svg["Gitter", link="https://gitter.im/domix/spring-boot-starter-jade4j?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
 
 ---
@@ -19,6 +18,15 @@ Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4
 image:https://img.shields.io/badge/JDK-7.0+-F30000.svg?style=flat["JDK", link="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html"]
 image:https://img.shields.io/badge/Spring%20Framework-4.1.x-green.svg?style=flat&["Spring Framework", link="http://docs.spring.io/spring/docs/4.1.x/spring-framework-reference/htmlsingle/"]
 image:https://img.shields.io/badge/Spring%20Boot-1.2.1-green.svg?style=flat&["Spring Boot", link="http://docs.spring.io/spring-boot/docs/1.2.1.RELEASE/reference/htmlsingle/"]
+
+== Download
+
+Maven Central
+image:https://maven-badges.herokuapp.com/maven-central/com.domingosuarez.boot/spring-boot-starter-jade4j/badge.svg?style=flat["Download",link="https://maven-badges.herokuapp.com/maven-central/com.domingosuarez.boot/spring-boot-starter-jade4j"]
+
+JCenter
+image:https://api.bintray.com/packages/domix/spring-boot/spring-boot-starter-jade4j/images/download.svg["Download", link="https://bintray.com/domix/spring-boot/spring-boot-starter-jade4j/_latestVersion"]
+
 
 == GitHub, Factoids and Stats
 
@@ -43,7 +51,7 @@ The usage is pretty straightforward as you can expect for any Starter.
 ----
 ...
 dependencies {
-  compile "com.domingosuarez.boot:spring-boot-starter-jade4j:0.1.2-SNAPSHOT"
+  compile "com.domingosuarez.boot:spring-boot-starter-jade4j:0.2"
 }
 ...
 ----
@@ -58,7 +66,7 @@ dependencies {
     <dependency>
       <groupId>com.domingosuarez.boot</groupId>
       <artifactId>spring-boot-starter-jade4j</artifactId>
-      <version>0.1.2-SNAPSHOT</version>
+      <version>0.2</version>
     </dependency>
   </dependencies>
 </project>
