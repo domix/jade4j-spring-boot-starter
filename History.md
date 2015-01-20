@@ -1,4 +1,11 @@
 
+0.2 / 2015-01-20
+==================
+
+  * renamed packages from org.springframework to com.domingosuarez
+  * polish docs
+  * changed groupId, upgraded to SpringBoot 1.2.1, fixed pom generation issue
+
 0.1.4.2 / 2015-01-02
 ==================
 
