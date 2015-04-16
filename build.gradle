@@ -172,8 +172,8 @@ publishing {
 }
 
 bintray {
-  user = project.hasProperty('bintray_user') ? bintray_user : ''
-  key = project.hasProperty('bintray_api_key') ? bintray_api_key : ''
+  user = project.hasProperty('bintrayUsername') ? bintrayUsername : ''
+  key = project.hasProperty('bintrayApiKey') ? bintrayApiKey : ''
 
   publications = ['mavenJava']
   dryRun = false //Whether to run this as dry-run, without deploying
@@ -195,8 +195,8 @@ bintray {
       name = project.version
       desc = project.description
       gpg {
-        sign = project.hasProperty('gpg_passphrase')
-        passphrase = project.hasProperty('gpg_passphrase') ? gpg_passphrase : ''
+        sign = project.hasProperty('bintrayGpgPassphrase')
+        passphrase = project.hasProperty('bintrayGpgPassphrase') ? bintrayGpgPassphrase : ''
       }
       mavenCentralSync {
         sync = false
