@@ -17,7 +17,7 @@ Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4
 
 image:https://img.shields.io/badge/JDK-7.0+-F30000.svg?style=flat["JDK", link="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html"]
 image:https://img.shields.io/badge/Spring%20Framework-4.1.x-green.svg?style=flat&["Spring Framework", link="http://docs.spring.io/spring/docs/4.1.x/spring-framework-reference/htmlsingle/"]
-image:https://img.shields.io/badge/Spring%20Boot-1.2.1-green.svg?style=flat&["Spring Boot", link="http://docs.spring.io/spring-boot/docs/1.2.1.RELEASE/reference/htmlsingle/"]
+image:https://img.shields.io/badge/Spring%20Boot-1.2.3-green.svg?style=flat&["Spring Boot", link="http://docs.spring.io/spring-boot/docs/1.2.3.RELEASE/reference/htmlsingle/"]
 
 == Download
 
@@ -27,7 +27,7 @@ image:https://maven-badges.herokuapp.com/maven-central/com.domingosuarez.boot/sp
 JCenter
 image:https://api.bintray.com/packages/domix/spring-boot/spring-boot-starter-jade4j/images/download.svg["Download", link="https://bintray.com/domix/spring-boot/spring-boot-starter-jade4j/_latestVersion"]
 
-== Some stats
+== Issues
 
 image:https://badge.waffle.io/domix/spring-boot-starter-jade4j.svg?label=ready&title=Ready["Stories in Ready", link="http://waffle.io/domix/spring-boot-starter-jade4j"]
 
