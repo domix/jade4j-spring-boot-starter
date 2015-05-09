@@ -1,4 +1,12 @@
 
+0.2.1 / 2015-05-09
+==================
+
+  * when release upload to bintray as well
+  * upgraded to Gradle 2.4
+  * added waffle.io badges
+  * upgraded to SpringBoot 1.2.3
+
 0.2 / 2015-01-20
 ==================
 
