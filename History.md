@@ -1,4 +1,13 @@
 
+0.3.0 / 2015-06-08
+==================
+
+  * upgraded jade4j to 0.4.3
+  * setting version to 0.3.0
+  * Upgraded some libraries & plugins
+  * upgraded dependencies & added gradle-versions plugin
+  * upgraded coveralls plugin
+
 0.2.1 / 2015-05-09
 ==================
 
