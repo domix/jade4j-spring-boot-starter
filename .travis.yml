@@ -14,5 +14,10 @@ jdk:
 env:
 - TERM=dumb
 
+install: true
+
+before_script:
+  - ./gradlew --version
+
 script:
 - ./gradlew test jacocoTestReport coveralls
