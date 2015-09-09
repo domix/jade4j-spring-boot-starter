@@ -225,5 +225,5 @@ javadoc.options.links("http://docs.oracle.com/javase/7/docs/api/", "http://docs.
 
 classes.dependsOn licenseFormat
 jacocoTestReport.dependsOn check
-createReleaseTag.dependsOn jacocoTestReport
+bintrayUpload.dependsOn jacocoTestReport
 createReleaseTag.dependsOn bintrayUpload
