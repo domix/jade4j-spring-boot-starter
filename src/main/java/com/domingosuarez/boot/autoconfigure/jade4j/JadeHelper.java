@@ -16,6 +16,7 @@
  */
 package com.domingosuarez.boot.autoconfigure.jade4j;
 
+import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;
@@ -41,5 +42,6 @@ public @interface JadeHelper {
    *
    * @return the suggested component name, if any
    */
+  @AliasFor(annotation = Component.class, attribute = "value")
   String value() default "";
 }
