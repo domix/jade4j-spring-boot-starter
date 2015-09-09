@@ -1,4 +1,11 @@
 
+0.3.1 / 2015-09-09
+==================
+
+  * using org.springframework.boot:spring-boot-dependencies
+  * using `@AliasFor` to fix broken `@JadeHelper`
+  * Upgraded to latest releases
+
 0.3.0 / 2015-06-08
 ==================
 
