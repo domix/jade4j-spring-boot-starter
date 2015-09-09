@@ -221,7 +221,7 @@ bintray {
 
 
 
-javadoc.options.links("http://docs.oracle.com/javase/7/docs/api/", "http://docs.spring.io/spring/docs/4.1.x/javadoc-api/", "http://docs.spring.io/spring-boot/docs/${springBootVersion}/api/", "https://docs.oracle.com/javaee/5/api/")
+javadoc.options.links("http://docs.oracle.com/javase/7/docs/api/", "http://docs.spring.io/spring/docs/4.2.x/javadoc-api/", "http://docs.spring.io/spring-boot/docs/${springBootVersion}/api/", "https://docs.oracle.com/javaee/5/api/")
 
 classes.dependsOn licenseFormat
 jacocoTestReport.dependsOn check
