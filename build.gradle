@@ -31,7 +31,7 @@ buildscript {
 
 plugins {
   id "com.github.hierynomus.license" version "0.11.0"
-  id 'net.researchgate.release' version '2.2.1'
+  id 'net.researchgate.release' version '2.2.2'
 }
 
 apply plugin: 'java'
