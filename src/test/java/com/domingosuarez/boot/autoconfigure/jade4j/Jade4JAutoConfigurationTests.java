@@ -105,7 +105,7 @@ public class Jade4JAutoConfigurationTests {
         "    <h1>Jade - Template engine</h1>\n" +
         "  </body>\n" +
         "</html>";
-    assertEquals(expected, result);
+    assertEquals(expected, result.trim());
   }
 
 

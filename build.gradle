@@ -75,8 +75,8 @@ dependencies {
     exclude module: 'commons-logging'
   }
 
-  compile 'de.neuland-bfi:spring-jade4j:0.4.2'
-  compile 'de.neuland-bfi:jade4j:0.4.3'
+  compile 'de.neuland-bfi:spring-jade4j:1.1.4'
+  compile 'de.neuland-bfi:jade4j:1.1.4'
 
   testCompile 'junit:junit'
   testCompile "org.springframework:spring-test"
