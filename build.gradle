@@ -22,16 +22,16 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
-    classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.7.1'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
+    classpath "io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE"
   }
 }
 
 plugins {
   id "com.github.hierynomus.license" version "0.11.0"
-  id 'net.researchgate.release' version '2.3.1'
+  id 'net.researchgate.release' version '2.5.0'
 }
 
 apply plugin: 'java'
@@ -75,8 +75,8 @@ dependencies {
     exclude module: 'commons-logging'
   }
 
-  compile 'de.neuland-bfi:spring-jade4j:1.2.1'
-  compile 'de.neuland-bfi:jade4j:1.2.1'
+  compile 'de.neuland-bfi:spring-jade4j:1.2.5'
+  compile 'de.neuland-bfi:jade4j:1.2.5'
 
   testCompile 'junit:junit'
   testCompile "org.springframework:spring-test"
