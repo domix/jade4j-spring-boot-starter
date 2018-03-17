@@ -1,6 +1,6 @@
 = Spring Boot jade4j Starter
 
-image:https://dl.dropboxusercontent.com/u/3942208/spring-jade-100x100.png[Logo]
+// image:https://dl.dropboxusercontent.com/u/3942208/spring-jade-100x100.png[Logo]
 
 image:https://img.shields.io/travis/domix/spring-boot-starter-jade4j/master.svg?style=flat["Build Status", link="https://travis-ci.org/domix/spring-boot-starter-jade4j"]
 image:https://img.shields.io/coveralls/domix/spring-boot-starter-jade4j/master.svg?style=flat["Coverage Status", link="https://coveralls.io/r/domix/spring-boot-starter-jade4j"]
