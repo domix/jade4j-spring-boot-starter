@@ -20,18 +20,15 @@ buildscript {
   repositories {
     jcenter()
   }
-
-  dependencies {
-    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
-  }
 }
 
 plugins {
-  id "com.github.hierynomus.license" version "0.11.0"
-  id 'net.researchgate.release' version '2.3.1'
+  id "com.jfrog.bintray" version "1.8.0"
+  id "com.github.hierynomus.license" version "0.14.0"
+  id 'net.researchgate.release' version '2.6.0'
   id "io.spring.dependency-management" version "1.0.4.RELEASE"
+  id 'com.github.kt3k.coveralls' version '2.8.2'
+  id "com.github.ben-manes.versions" version "0.17.0"
 }
 
 apply plugin: 'java'
@@ -72,7 +69,7 @@ dependencies {
     exclude module: 'commons-logging'
   }
 
-  compile 'de.neuland-bfi:spring-jade4j:1.2.1'
+  compile 'de.neuland-bfi:spring-jade4j:1.2.7'
   compile 'de.neuland-bfi:jade4j:1.2.1'
 
   testCompile 'junit:junit'
