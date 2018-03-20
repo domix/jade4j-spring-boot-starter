@@ -74,6 +74,7 @@ dependencies {
 
   testCompile 'junit:junit'
   testCompile "org.springframework:spring-test"
+  testCompile 'org.springframework.boot:spring-boot-test'
 }
 
 def jarManifestAttributes = [
