@@ -16,7 +16,6 @@
  */
 package com.domingosuarez.boot.autoconfigure.jade4j;
 
-import com.domingosuarez.boot.autoconfigure.jade4j.Jade4JTemplateAvailabilityProvider;
 import org.junit.Test;
 import org.springframework.boot.autoconfigure.template.TemplateAvailabilityProvider;
 import org.springframework.core.io.DefaultResourceLoader;
@@ -41,13 +40,13 @@ public class Jade4JTemplateAvailabilityProviderTests {
   @Test
   public void availabilityOfTemplateInDefaultLocation() {
     assertTrue(this.provider.isTemplateAvailable("home", this.environment,
-        getClass().getClassLoader(), this.resourceLoader));
+      getClass().getClassLoader(), this.resourceLoader));
   }
 
   @Test
   public void availabilityOfTemplateThatDoesNotExist() {
     assertFalse(this.provider.isTemplateAvailable("whatever", this.environment,
-        getClass().getClassLoader(), this.resourceLoader));
+      getClass().getClassLoader(), this.resourceLoader));
   }
 
   @Test
@@ -55,7 +54,7 @@ public class Jade4JTemplateAvailabilityProviderTests {
     this.environment.setProperty("spring.jade4j.prefix", "classpath:/custom-templates/");
 
     assertTrue(this.provider.isTemplateAvailable("custom", this.environment,
-        getClass().getClassLoader(), this.resourceLoader));
+      getClass().getClassLoader(), this.resourceLoader));
   }
 
   @Test
@@ -63,6 +62,6 @@ public class Jade4JTemplateAvailabilityProviderTests {
     this.environment.setProperty("spring.jade4j.suffix", ".jade4j");
 
     assertTrue(this.provider.isTemplateAvailable("suffixed", this.environment,
-        getClass().getClassLoader(), this.resourceLoader));
+      getClass().getClassLoader(), this.resourceLoader));
   }
 }
