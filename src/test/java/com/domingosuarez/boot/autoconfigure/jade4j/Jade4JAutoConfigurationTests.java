@@ -16,6 +16,7 @@
  */
 package com.domingosuarez.boot.autoconfigure.jade4j;
 
+import com.domingosuarez.boot.autoconfigure.jade4j.support.TestConfig;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.spring.view.JadeView;
 import de.neuland.jade4j.spring.view.JadeViewResolver;
@@ -24,8 +25,7 @@ import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanCreationException;
-import org.springframework.boot.autoconfigure.PropertyPlaceholderAutoConfiguration;
-import com.domingosuarez.boot.autoconfigure.jade4j.support.TestConfig;
+import org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;
 import org.springframework.boot.test.util.EnvironmentTestUtils;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -98,13 +98,13 @@ public class Jade4JAutoConfigurationTests {
     Map<String, Object> params = Collections.emptyMap();
     String result = engine.renderTemplate(template, params);
     String expected = "<html>\n" +
-        "  <head>\n" +
-        "    <title>Jade</title>\n" +
-        "  </head>\n" +
-        "  <body>\n" +
-        "    <h1>Jade - Template engine</h1>\n" +
-        "  </body>\n" +
-        "</html>";
+      "  <head>\n" +
+      "    <title>Jade</title>\n" +
+      "  </head>\n" +
+      "  <body>\n" +
+      "    <h1>Jade - Template engine</h1>\n" +
+      "  </body>\n" +
+      "</html>";
     assertEquals(expected, result.trim());
   }
 
@@ -163,8 +163,8 @@ public class Jade4JAutoConfigurationTests {
   @Ignore
   public void renderNonWebAppTemplate() throws Exception {
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-        Jade4JAutoConfiguration.class,
-        PropertyPlaceholderAutoConfiguration.class);
+      Jade4JAutoConfiguration.class,
+      PropertyPlaceholderAutoConfiguration.class);
     assertEquals(0, context.getBeanNamesForType(ViewResolver.class).length);
     try {
       JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);

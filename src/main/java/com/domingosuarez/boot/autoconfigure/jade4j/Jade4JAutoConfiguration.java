@@ -16,7 +16,6 @@
  */
 package com.domingosuarez.boot.autoconfigure.jade4j;
 
-import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper;
 import de.neuland.jade4j.Jade4J;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.spring.template.SpringTemplateLoader;
@@ -78,7 +77,7 @@ public class Jade4JAutoConfiguration {
       if (checkTemplateLocation) {
         Resource resource = this.resourceLoader.getResource(this.environment.getProperty("prefix", DEFAULT_PREFIX));
         Assert.state(resource.exists(), "Cannot find template location: "
-            + resource + " (please add some templates or check your jade4j configuration)");
+          + resource + " (please add some templates or check your jade4j configuration)");
       }
     }
 
@@ -130,8 +129,8 @@ public class Jade4JAutoConfiguration {
       resolver.setConfiguration(jadeConfiguration);
 
       resolver.setContentType(appendCharset(
-          this.environment.getProperty("contentType", "text/html"),
-          templateEngine.getEncoding()));
+        this.environment.getProperty("contentType", "text/html"),
+        templateEngine.getEncoding()));
 
       resolver.setViewNames(this.environment.getProperty("viewNames", String[].class));
       // This resolver acts as a fallback resolver (e.g. like a
