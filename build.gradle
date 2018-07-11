@@ -144,14 +144,14 @@ publishing {
         def root = asNode()
         root.appendNode('name', project.pomName)
         root.appendNode('description', project.description)
-        root.appendNode('url', 'https://github.com/domix/spring-boot-starter-jade4j')
+        root.appendNode('url', 'https://github.com/domix/jade4j-spring-boot-starter')
         root.appendNode('inceptionYear', '2014')
         root.appendNode('packaging', 'jar')
 
         def scm = root.appendNode('scm')
-        scm.appendNode('url', 'https://github.com/domix/spring-boot-starter-jade4j')
-        scm.appendNode('connection', 'scm:https://domix@github.com/domix/spring-boot-starter-jade4j.git')
-        scm.appendNode('developerConnection', 'scm:git@github.com:domix/spring-boot-starter-jade4j.git')
+        scm.appendNode('url', 'https://github.com/domix/jade4j-spring-boot-starter')
+        scm.appendNode('connection', 'scm:https://domix@github.com/domix/jade4j-spring-boot-starter.git')
+        scm.appendNode('developerConnection', 'scm:git@github.com:domix/jade4j-spring-boot-starter.git')
 
         def license = root.appendNode('licenses').appendNode('license')
         license.appendNode('name', 'The Apache Software License, Version 2.0')
@@ -189,9 +189,9 @@ bintray {
     userOrg = 'domix'
     name = project.name
     desc = project.description
-    websiteUrl = 'https://github.com/domix/spring-boot-starter-jade4j'
-    issueTrackerUrl = 'https://github.com/domix/spring-boot-starter-jade4j/issues'
-    vcsUrl = 'https://github.com/domix/spring-boot-starter-jade4j.git'
+    websiteUrl = 'https://github.com/domix/jade4j-spring-boot-starter'
+    issueTrackerUrl = 'https://github.com/domix/jade4j-spring-boot-starter/issues'
+    vcsUrl = 'https://github.com/domix/jade4j-spring-boot-starter.git'
     licenses = ['Apache-2.0']
     labels = ['spring-boot', 'jade', 'starter', 'spring', 'spring-mvc']
     publicDownloadNumbers = true
