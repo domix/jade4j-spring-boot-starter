@@ -26,7 +26,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;
-import org.springframework.boot.test.util.EnvironmentTestUtils;
+import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -63,7 +63,7 @@ public class Jade4JAutoConfigurationTests {
 
   @Test
   public void shouldRenderTemplateAsExpected() throws Exception {
-    EnvironmentTestUtils.addEnvironment(this.context, "spring.jade4j.mode:XHTML");
+    TestPropertyValues.of("spring.jade4j.mode:XHTML").applyTo(context);
     this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
     JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
@@ -77,7 +77,7 @@ public class Jade4JAutoConfigurationTests {
 
   @Test
   public void shouldRenderTemplateWithParams() throws Exception {
-    EnvironmentTestUtils.addEnvironment(this.context, "spring.jade4j.mode:XHTML");
+    TestPropertyValues.of("spring.jade4j.mode:XHTML").applyTo(context);
     this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
     JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
@@ -90,7 +90,7 @@ public class Jade4JAutoConfigurationTests {
 
   @Test
   public void shouldRenderPrettyTemplateTemplate() throws Exception {
-    EnvironmentTestUtils.addEnvironment(this.context, "spring.jade4j.prettyPrint:true");
+    TestPropertyValues.of("spring.jade4j.prettyPrint:true").applyTo(context);
     this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
     JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
@@ -111,7 +111,7 @@ public class Jade4JAutoConfigurationTests {
 
   @Test(expected = BeanCreationException.class)
   public void templateLocationDoesNotExist() throws Exception {
-    EnvironmentTestUtils.addEnvironment(this.context, "spring.jade4j.prefix:classpath:/no-such-directory/");
+    TestPropertyValues.of("spring.jade4j.prefix:classpath:/no-such-directory/").applyTo(context);
     this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
   }
@@ -120,7 +120,7 @@ public class Jade4JAutoConfigurationTests {
   @Ignore
   public void templateLocationEmpty() throws Exception {
     new File("./build/classes/test/templates/empty-directory").mkdir();
-    EnvironmentTestUtils.addEnvironment(this.context, "spring.jade4j.prefix:classpath:/templates/empty-directory/");
+    TestPropertyValues.of("spring.jade4j.prefix:classpath:/templates/empty-directory/").applyTo(context);
     this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
   }
@@ -147,7 +147,7 @@ public class Jade4JAutoConfigurationTests {
 
   @Test
   public void createLayoutFromConfigClass_withHelper() throws Exception {
-    EnvironmentTestUtils.addEnvironment(this.context, "spring.jade4j.mode:XHTML");
+    TestPropertyValues.of("spring.jade4j.mode:XHTML").applyTo(context);
     this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class, TestConfig.class);
     this.context.refresh();
     JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
