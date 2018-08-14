@@ -27,8 +27,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
-import org.springframework.boot.bind.RelaxedPropertyResolver;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,18 +63,18 @@ public class Jade4JAutoConfiguration {
     @Autowired
     private final ResourceLoader resourceLoader = new DefaultResourceLoader();
 
-    private RelaxedPropertyResolver environment;
+    private Environment environment;
 
     @Override
     public void setEnvironment(Environment environment) {
-      this.environment = new RelaxedPropertyResolver(environment, "spring.jade4j.");
+      this.environment = environment;
     }
 
     @PostConstruct
     public void checkTemplateLocationExists() {
-      Boolean checkTemplateLocation = this.environment.getProperty("checkTemplateLocation", Boolean.class, true);
+      Boolean checkTemplateLocation = this.environment.getProperty("spring.jade4j.checkTemplateLocation", Boolean.class, true);
       if (checkTemplateLocation) {
-        Resource resource = this.resourceLoader.getResource(this.environment.getProperty("prefix", DEFAULT_PREFIX));
+        Resource resource = this.resourceLoader.getResource(this.environment.getProperty("spring.jade4j.prefix", DEFAULT_PREFIX));
         Assert.state(resource.exists(), "Cannot find template location: "
           + resource + " (please add some templates or check your jade4j configuration)");
       }
@@ -85,19 +84,19 @@ public class Jade4JAutoConfiguration {
     public SpringTemplateLoader defaultSpringTemplateLoader() {
       SpringTemplateLoader resolver = new SpringTemplateLoader();
 
-      resolver.setBasePath(this.environment.getProperty("prefix", DEFAULT_PREFIX));
-      resolver.setSuffix(this.environment.getProperty("suffix", DEFAULT_SUFFIX));
-      resolver.setEncoding(this.environment.getProperty("encoding", "UTF-8"));
+      resolver.setBasePath(this.environment.getProperty("spring.jade4j.prefix", DEFAULT_PREFIX));
+      resolver.setSuffix(this.environment.getProperty("spring.jade4j.suffix", DEFAULT_SUFFIX));
+      resolver.setEncoding(this.environment.getProperty("spring.jade4j.encoding", "UTF-8"));
       return resolver;
     }
 
     @Bean
     public JadeConfiguration defaultJadeConfiguration() {
       JadeConfiguration configuration = new JadeConfiguration();
-      configuration.setCaching(this.environment.getProperty("caching", Boolean.class, true));
+      configuration.setCaching(this.environment.getProperty("spring.jade4j.caching", Boolean.class, true));
       configuration.setTemplateLoader(defaultSpringTemplateLoader());
-      configuration.setPrettyPrint(this.environment.getProperty("prettyPrint", Boolean.class, false));
-      configuration.setMode(this.environment.getProperty("mode", Jade4J.Mode.class, Jade4J.Mode.HTML));
+      configuration.setPrettyPrint(this.environment.getProperty("spring.jade4j.prettyPrint", Boolean.class, false));
+      configuration.setMode(this.environment.getProperty("spring.jade4j.mode", Jade4J.Mode.class, Jade4J.Mode.HTML));
       return configuration;
     }
 
@@ -109,7 +108,7 @@ public class Jade4JAutoConfiguration {
   @ConditionalOnWebApplication
   protected static class Jade4JViewResolverConfiguration implements EnvironmentAware {
 
-    private RelaxedPropertyResolver environment;
+    private Environment environment;
 
     @Autowired
     private JadeConfiguration jadeConfiguration;
@@ -119,7 +118,7 @@ public class Jade4JAutoConfiguration {
 
     @Override
     public void setEnvironment(Environment environment) {
-      this.environment = new RelaxedPropertyResolver(environment, "spring.jade4j.");
+      this.environment = environment;
     }
 
     @Bean
@@ -129,13 +128,13 @@ public class Jade4JAutoConfiguration {
       resolver.setConfiguration(jadeConfiguration);
 
       resolver.setContentType(appendCharset(
-        this.environment.getProperty("contentType", "text/html"),
+        this.environment.getProperty("spring.jade4j.contentType", "text/html"),
         templateEngine.getEncoding()));
 
-      resolver.setViewNames(this.environment.getProperty("viewNames", String[].class));
+      resolver.setViewNames(this.environment.getProperty("spring.jade4j.viewNames", String[].class));
       // This resolver acts as a fallback resolver (e.g. like a
       // InternalResourceViewResolver) so it needs to have low precedence
-      resolver.setOrder(this.environment.getProperty("resolver.order", Integer.class, Ordered.LOWEST_PRECEDENCE - 50));
+      resolver.setOrder(this.environment.getProperty("spring.jade4j.resolver.order", Integer.class, Ordered.LOWEST_PRECEDENCE - 50));
       return resolver;
     }
 
