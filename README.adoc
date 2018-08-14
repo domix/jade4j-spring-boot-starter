@@ -1,4 +1,4 @@
-= Spring Boot jade4j Starter
+= jade4j Spring Boot Starter
 
 // image:https://dl.dropboxusercontent.com/u/3942208/spring-jade-100x100.png[Logo]
 
@@ -9,38 +9,38 @@ image:https://badges.gitter.im/Join%20Chat.svg["Gitter", link="https://gitter.im
 
 ---
 
-This Starter provides you the minimal and required configuration to use http://jade-lang.com/[jade templates] as views in your Spring Boot application.
+This Starter provides you the minimal and required configuration to use https://pugjs.org[pug/jade templates] as views in your Spring Boot application.
 
 Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4j] and https://github.com/neuland/spring-jade4j[spring-jade4j] libraries.
 
 == Environment
 
-image:https://img.shields.io/badge/JDK-7.0+-F30000.svg?style=flat["JDK", link="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html"]
-image:https://img.shields.io/badge/Spring%20Framework-4.2.x-green.svg?style=flat&["Spring Framework", link="http://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/htmlsingle/"]
-image:https://img.shields.io/badge/Spring%20Boot-1.3.0.M5-green.svg?style=flat&["Spring Boot", link="http://docs.spring.io/spring-boot/docs/1.3.0.M5/reference/htmlsingle/"]
+image:https://img.shields.io/badge/JDK-8.0+-F30000.svg?style=flat["JDK", link="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"]
+image:https://img.shields.io/badge/Spring%20Framework-5.0.x-green.svg?style=flat&["Spring Framework", link="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/"]
+image:https://img.shields.io/badge/Spring%20Boot-2.0.x-green.svg?style=flat&["Spring Boot", link="https://docs.spring.io/spring-boot/docs/2.0.x/reference/htmlsingle/"]
 
 == Download
 
 Maven Central
-image:https://maven-badges.herokuapp.com/maven-central/com.domingosuarez.boot/spring-boot-starter-jade4j/badge.svg?style=flat["Download",link="https://maven-badges.herokuapp.com/maven-central/com.domingosuarez.boot/spring-boot-starter-jade4j"]
+image:https://maven-badges.herokuapp.com/maven-central/com.domingosuarez.boot/jade4j-spring-boot-starter/badge.svg?style=flat["Download",link="https://maven-badges.herokuapp.com/maven-central/com.domingosuarez.boot/jade4j-spring-boot-starter"]
 
 JCenter
-image:https://api.bintray.com/packages/domix/spring-boot/spring-boot-starter-jade4j/images/download.svg["Download", link="https://bintray.com/domix/spring-boot/spring-boot-starter-jade4j/_latestVersion"]
+image:https://api.bintray.com/packages/domix/spring-boot/jade4j-spring-boot-starter/images/download.svg["Download", link="https://bintray.com/domix/spring-boot/jade4j-spring-boot-starter/_latestVersion"]
 
 == Issues
 
-image:https://badge.waffle.io/domix/spring-boot-starter-jade4j.svg?label=ready&title=Ready["Stories in Ready", link="http://waffle.io/domix/spring-boot-starter-jade4j"]
+image:https://badge.waffle.io/domix/jade4j-spring-boot-starter.svg?label=ready&title=Ready["Stories in Ready", link="http://waffle.io/domix/jade4j-spring-boot-starter"]
 
 
-image:https://graphs.waffle.io/domix/spring-boot-starter-jade4j/throughput.svg["Throughput Graph", link="https://waffle.io/domix/spring-boot-starter-jade4j/metrics"]
+image:https://graphs.waffle.io/domix/jade4j-spring-boot-starter/throughput.svg["Throughput Graph", link="https://waffle.io/domix/jade4j-spring-boot-starter/metrics"]
 
 
 
 == GitHub, Factoids and Stats
 
-image:https://img.shields.io/github/forks/domix/spring-boot-starter-jade4j.svg?style=flat["Forks", link="https://github.com/domix/spring-boot-starter-jade4j/network"]
-image:https://img.shields.io/github/release/domix/spring-boot-starter-jade4j.svg?style=flat["Release", link="https://github.com/domix/spring-boot-starter-jade4j/releases"]
-image:https://img.shields.io/github/issues/domix/spring-boot-starter-jade4j.svg?style=flat["Issues", link="https://github.com/domix/spring-boot-starter-jade4j/issues"]
+image:https://img.shields.io/github/forks/domix/jade4j-spring-boot-starter.svg?style=flat["Forks", link="https://github.com/domix/jade4j-spring-boot-starter/network"]
+image:https://img.shields.io/github/release/domix/jade4j-spring-boot-starter.svg?style=flat["Release", link="https://github.com/domix/jade4j-spring-boot-starter/releases"]
+image:https://img.shields.io/github/issues/domix/jade4j-spring-boot-starter.svg?style=flat["Issues", link="https://github.com/domix/jade4j-spring-boot-starter/issues"]
 
 ++++
 <script type="text/javascript" src="http://www.openhub.net/p/721264/widgets/project_basic_stats.js"></script>
@@ -59,7 +59,7 @@ The usage is pretty straightforward as you can expect for any Spring Boot Starte
 ----
 ...
 dependencies {
-  compile "com.domingosuarez.boot:spring-boot-starter-jade4j:0.3.1"
+  compile "com.domingosuarez.boot:jade4j-spring-boot-starter:2.0.4.RELEASE"
 }
 ...
 ----
@@ -73,8 +73,8 @@ dependencies {
   <dependencies>
     <dependency>
       <groupId>com.domingosuarez.boot</groupId>
-      <artifactId>spring-boot-starter-jade4j</artifactId>
-      <version>0.3.1</version>
+      <artifactId>jade4j-spring-boot-starter</artifactId>
+      <version>2.0.4.RELEASE</version>
     </dependency>
   </dependencies>
 </project>
@@ -96,7 +96,7 @@ Then you can add new Spring MVC controllers as usual
 ---
 
 == Helpers
-You can add https://github.com/neuland/jade4j#helpers[helpers] automatically using the annotation https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[@JadeHelper]
+You can add https://github.com/neuland/jade4j#helpers[helpers] automatically using the annotation https://github.com/domix/jade4j-spring-boot-starter/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[@JadeHelper]
 
 [source,java]
 ----
@@ -126,7 +126,7 @@ html
 
 
 === Customize the helper's name
-You can customize the helper's name using the https://github.com/domix/spring-boot-starter-jade4j/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[JadeHelper] annotation
+You can customize the helper's name using the https://github.com/domix/jade4j-spring-boot-starter/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[JadeHelper] annotation
 [source,java]
 ----
 package demo;
@@ -177,4 +177,4 @@ spring.jade4j.resolver.order, Integer, Ordered.LOWEST_PRECEDENCE - 50
 
 == Complete demo application
 
-Please take a look into this https://github.com/domix/spring-boot-starter-jade4j-showcase[application] if you want to checkout a fully application.
+Please take a look into this https://github.com/domix/jade4j-spring-boot-starter-showcase[application] if you want to checkout a fully application.

@@ -1,3 +1,9 @@
+2.0.4.RELEASE / 2018-08-14
+==================
+
+  * upgraded to SpringBoot 2.0.4.RELEASE
+  * fixed compatibility issues with SpringBoot 2
+  * setting version to 2.0.4.RELEASE
 
 0.3.1 / 2015-09-09
 ==================
