@@ -1,8 +1,6 @@
 = jade4j Spring Boot Starter
 
-// image:https://dl.dropboxusercontent.com/u/3942208/spring-jade-100x100.png[Logo]
-
-//image:https://img.shields.io/travis/domix/spring-boot-starter-jade4j/master.svg?style=flat["Build Status", link="https://travis-ci.org/domix/spring-boot-starter-jade4j"]
+image:https://img.shields.io/travis/domix/jade4j-spring-boot-starter/master.svg?style=flat["Build Status", link="https://travis-ci.org/domix/jade4j-spring-boot-starter"]
 image:https://img.shields.io/coveralls/domix/spring-boot-starter-jade4j/master.svg?style=flat["Coverage Status", link="https://coveralls.io/r/domix/spring-boot-starter-jade4j"]
 image:https://img.shields.io/badge/license-ASF2-blue.svg?style=flat["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
 image:https://badges.gitter.im/Join%20Chat.svg["Gitter", link="https://gitter.im/domix/spring-boot-starter-jade4j?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
