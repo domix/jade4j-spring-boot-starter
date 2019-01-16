@@ -129,7 +129,7 @@ license {
   ext.name = 'Domingo Suarez Torres'
   ext.email = 'domingo.suarez@gmail.com'
 
-  header rootProject.file('HEADER_LICENSE')
+  header rootProject.file('LICENSE')
   strictCheck true
 }
 
