@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:    
+    working_directory: ~/
+    steps:
+      - checkout
+      - run: ./gradlew test jacocoTestReport coveralls
+      - save_cache:
+          key: spring-boot-starter-jade4j-{{ checksum "build.gradle" }}
+    
