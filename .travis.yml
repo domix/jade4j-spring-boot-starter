@@ -10,6 +10,9 @@ cache:
 
 language: groovy
 
+jdk:
+- oraclejdk8
+- openjdk8
 env:
 - TERM=dumb
 
@@ -19,7 +22,7 @@ before_script:
   - ./gradlew --version
 
 script:
-  - jdk_switcher use oraclejdk8
+  #- jdk_switcher use oraclejdk8
   - ./gradlew test jacocoTestReport coveralls
   #- jdk_switcher use openjdk7
   #- ./gradlew test jacocoTestReport coveralls
