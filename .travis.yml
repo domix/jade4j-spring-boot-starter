@@ -13,7 +13,14 @@ language: groovy
 jdk:
 - oraclejdk11
 - openjdk8
-- openjdk11
+#- openjdk11
+
+matrix:
+  include:
+    - jdk: oraclejdk11
+      before_install:
+        - rm "${JAVA_HOME}/lib/security/cacerts"
+        - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
 
 env:
 - TERM=dumb
