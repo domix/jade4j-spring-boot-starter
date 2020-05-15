@@ -48,7 +48,7 @@ image:https://img.shields.io/github/issues/domix/jade4j-spring-boot-starter.svg?
 
 == Usage
 
-The usage is pretty straightforward as you can expect for any Spring Boot Starter.
+The usage is pretty straightforward as you can expect for any Spring Boot Starter
 
 
 === Add Maven dependency
