@@ -201,54 +201,16 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.domingosuarez.boot.autoconfigure.jade4j;
+package com.domingosuarez.boot.autoconfigure.pug4j.support;
 
-import org.junit.Test;
-import org.springframework.boot.autoconfigure.template.TemplateAvailabilityProvider;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.mock.env.MockEnvironment;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * Tests for {@link com.domingosuarez.boot.autoconfigure.jade4j.Jade4JTemplateAvailabilityProvider}.
- *
- * @author Domingo Suarez Torres
+ * Created by domix on 12/26/14.
  */
-public class Jade4JTemplateAvailabilityProviderTests {
-  private final TemplateAvailabilityProvider provider = new Jade4JTemplateAvailabilityProvider();
+@Configuration
+@ComponentScan
+public class TestConfig {
 
-  private final ResourceLoader resourceLoader = new DefaultResourceLoader();
-
-  private final MockEnvironment environment = new MockEnvironment();
-
-  @Test
-  public void availabilityOfTemplateInDefaultLocation() {
-    assertTrue(this.provider.isTemplateAvailable("home", this.environment,
-      getClass().getClassLoader(), this.resourceLoader));
-  }
-
-  @Test
-  public void availabilityOfTemplateThatDoesNotExist() {
-    assertFalse(this.provider.isTemplateAvailable("whatever", this.environment,
-      getClass().getClassLoader(), this.resourceLoader));
-  }
-
-  @Test
-  public void availabilityOfTemplateWithCustomPrefix() {
-    this.environment.setProperty("spring.jade4j.prefix", "classpath:/custom-templates/");
-
-    assertTrue(this.provider.isTemplateAvailable("custom", this.environment,
-      getClass().getClassLoader(), this.resourceLoader));
-  }
-
-  @Test
-  public void availabilityOfTemplateWithCustomSuffix() {
-    this.environment.setProperty("spring.jade4j.suffix", ".jade4j");
-
-    assertTrue(this.provider.isTemplateAvailable("suffixed", this.environment,
-      getClass().getClassLoader(), this.resourceLoader));
-  }
 }

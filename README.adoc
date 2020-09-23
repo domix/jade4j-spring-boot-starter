@@ -1,4 +1,4 @@
-= jade4j Spring Boot Starter
+= pug4j Spring Boot Starter
 
 image:https://img.shields.io/travis/domix/jade4j-spring-boot-starter/master.svg?style=flat["Build Status", link="https://travis-ci.org/domix/jade4j-spring-boot-starter"]
 image:https://img.shields.io/coveralls/domix/spring-boot-starter-jade4j/master.svg?style=flat["Coverage Status", link="https://coveralls.io/r/domix/spring-boot-starter-jade4j"]
@@ -9,7 +9,7 @@ image:https://badges.gitter.im/Join%20Chat.svg["Gitter", link="https://gitter.im
 
 This Starter provides you the minimal and required configuration to use https://pugjs.org[pug/jade templates] as views in your Spring Boot application.
 
-Behind the scenes, this starter uses the https://github.com/neuland/jade4j[jade4j] and https://github.com/neuland/spring-jade4j[spring-jade4j] libraries.
+Behind the scenes, this starter uses the https://github.com/neuland/pug4j[pug4j] and https://github.com/neuland/spring-pug4j[spring-pug4j] libraries.
 
 == Environment
 
@@ -78,15 +78,15 @@ dependencies {
 </project>
 ----
 
-=== Jade templates
-Add the jade templates in the following directory
+=== Pug templates
+Add the pug templates in the following directory
 [indent=0]
 ----
   src
   └── main
       └── resources
           └── templates
-              └── index.jade
+              └── index.pug
 ----
 
 Then you can add new Spring MVC controllers as usual
@@ -94,15 +94,15 @@ Then you can add new Spring MVC controllers as usual
 ---
 
 == Helpers
-You can add https://github.com/neuland/jade4j#helpers[helpers] automatically using the annotation https://github.com/domix/jade4j-spring-boot-starter/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[@JadeHelper]
+You can add https://github.com/neuland/pug4j#helpers[helpers] automatically using the annotation https://github.com/domix/jade4j-spring-boot-starter/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/pug4j/PugHelper.java[@PugHelper]
 
 [source,java]
 ----
 package demo;
 
-import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper;
+import com.domingosuarez.boot.autoconfigure.pug4j.JadeHelper;
 
-@JadeHelper
+@PugHelper
 public class Util {
   public String format(double number) {
     return "some formating";
@@ -110,7 +110,7 @@ public class Util {
 }
 ----
 
-`template.jade`
+`template.pug`
 ----
 html
   head
@@ -124,14 +124,14 @@ html
 
 
 === Customize the helper's name
-You can customize the helper's name using the https://github.com/domix/jade4j-spring-boot-starter/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/jade4j/JadeHelper.java[JadeHelper] annotation
+You can customize the helper's name using the https://github.com/domix/jade4j-spring-boot-starter/blob/master/src/main/java/com/domingosuarez/boot/autoconfigure/pug4j/PugHelper.java[PugHelper] annotation
 [source,java]
 ----
 package demo;
 
-import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper;
+import com.domingosuarez.boot.autoconfigure.pug4j.PugHelper;
 
-@JadeHelper("myId") // <1>
+@PugHelper("myId") // <1>
 public class Util {
   public String format(double number) {
     return "some formating";
@@ -140,7 +140,7 @@ public class Util {
 ----
 <1> The new id
 
-`template.jade`
+`template.pug`
 ----
 html
   head
@@ -160,15 +160,15 @@ The following settings are available:
 [format="csv", options="header"]
 |===
 Setting key, Type, Default value
-spring.jade4j.checkTemplateLocation, Boolean, true
-spring.jade4j.prefix, String, 'classpath:/templates/'
-spring.jade4j.suffix, String, '.jade'
-spring.jade4j.encoding, String, 'UTF-8'
-spring.jade4j.caching, Boolean, true
-spring.jade4j.prettyPrint, Boolean, false
-spring.jade4j.mode, String, 'HTML'
-spring.jade4j.contentType, String, 'text/html'
-spring.jade4j.resolver.order, Integer, Ordered.LOWEST_PRECEDENCE - 50
+spring.pug4j.checkTemplateLocation, Boolean, true
+spring.pug4j.prefix, String, 'classpath:/templates/'
+spring.pug4j.suffix, String, '.pug'
+spring.pug4j.encoding, String, 'UTF-8'
+spring.pug4j.caching, Boolean, true
+spring.pug4j.prettyPrint, Boolean, false
+spring.pug4j.mode, String, 'HTML'
+spring.pug4j.contentType, String, 'text/html'
+spring.pug4j.resolver.order, Integer, Ordered.LOWEST_PRECEDENCE - 50
 |===
 
 ---

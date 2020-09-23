@@ -201,34 +201,16 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.domingosuarez.boot.autoconfigure.jade4j;
+package com.domingosuarez.boot.autoconfigure.pug4j.support;
 
-import org.springframework.core.annotation.AliasFor;
-import org.springframework.stereotype.Component;
-
-import java.lang.annotation.*;
+import com.domingosuarez.boot.autoconfigure.pug4j.PugHelper;
 
 /**
- * Indicates that an annotated class is a "Jade Helper" (e.g. utility object in the jade context).
- * <p/>
- * <p>This annotation serves as a specialization of {@link Component @Component},
- * allowing for implementation classes to be autodetected through classpath scanning.
- *
- * @author Domingo Suarez Torres
- * @see org.springframework.stereotype.Component
- * @see org.springframework.context.annotation.ClassPathBeanDefinitionScanner
+ * Created by domix on 12/26/14.
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Component
-public @interface JadeHelper {
-  /**
-   * The value may indicate a suggestion for a logical component name,
-   * to be turned into a Spring bean in case of an autodetected component.
-   *
-   * @return the suggested component name, if any
-   */
-  @AliasFor(annotation = Component.class, attribute = "value")
-  String value() default "";
+@PugHelper
+public class SomePugUtil {
+  public String foo() {
+    return "foo";
+  }
 }
