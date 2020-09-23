@@ -201,13 +201,13 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.domingosuarez.boot.autoconfigure.jade4j;
+package com.domingosuarez.boot.autoconfigure.pug4j;
 
-import com.domingosuarez.boot.autoconfigure.jade4j.support.TestConfig;
-import de.neuland.jade4j.JadeConfiguration;
-import de.neuland.jade4j.spring.view.JadeView;
-import de.neuland.jade4j.spring.view.JadeViewResolver;
-import de.neuland.jade4j.template.JadeTemplate;
+import com.domingosuarez.boot.autoconfigure.pug4j.support.TestConfig;
+import de.neuland.pug4j.PugConfiguration;
+import de.neuland.pug4j.spring.view.PugView;
+import de.neuland.pug4j.spring.view.PugViewResolver;
+import de.neuland.pug4j.template.PugTemplate;
 import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -234,11 +234,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests for {@link Jade4JAutoConfiguration}.
+ * Tests for {@link Pug4JAutoConfiguration}.
  *
  * @author Domingo Suarez Torres
  */
-public class Jade4JAutoConfigurationTests {
+public class Pug4JAutoConfigurationTests {
   private AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 
   @After
@@ -250,46 +250,46 @@ public class Jade4JAutoConfigurationTests {
 
   @Test
   public void shouldRenderTemplateAsExpected() throws Exception {
-    TestPropertyValues.of("spring.jade4j.mode:XHTML").applyTo(context);
-    this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
+    TestPropertyValues.of("spring.pug4j.mode:XHTML").applyTo(context);
+    this.context.register(Pug4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
-    JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
-    JadeTemplate template = engine.getTemplate("demo.jade");
+    PugConfiguration engine = this.context.getBean(PugConfiguration.class);
+    PugTemplate template = engine.getTemplate("demo.pug");
     Map<String, Object> params = Collections.emptyMap();
     String result = engine.renderTemplate(template, params);
-    String expected = "<html><head><title>Jade</title></head><body><h1>Jade - Template engine</h1></body></html>";
+    String expected = "<html><head><title>Pug</title></head><body><h1>Pug - Template engine</h1></body></html>";
 
     assertEquals(expected, result);
   }
 
   @Test
   public void shouldRenderTemplateWithParams() throws Exception {
-    TestPropertyValues.of("spring.jade4j.mode:XHTML").applyTo(context);
-    this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
+    TestPropertyValues.of("spring.pug4j.mode:XHTML").applyTo(context);
+    this.context.register(Pug4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
-    JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
-    JadeTemplate template = engine.getTemplate("demo.jade");
+    PugConfiguration engine = this.context.getBean(PugConfiguration.class);
+    PugTemplate template = engine.getTemplate("demo.pug");
     Map<String, Object> params = params();
     String result = engine.renderTemplate(template, params);
-    String expected = "<html><head><title>Jade</title></head><body><h1>Jade - Template engine</h1><h2>With user</h2></body></html>";
+    String expected = "<html><head><title>Pug</title></head><body><h1>Pug - Template engine</h1><h2>With user</h2></body></html>";
     assertEquals(expected, result);
   }
 
   @Test
   public void shouldRenderPrettyTemplateTemplate() throws Exception {
-    TestPropertyValues.of("spring.jade4j.prettyPrint:true").applyTo(context);
-    this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
+    TestPropertyValues.of("spring.pug4j.prettyPrint:true").applyTo(context);
+    this.context.register(Pug4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
-    JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
-    JadeTemplate template = engine.getTemplate("demo.jade");
+    PugConfiguration engine = this.context.getBean(PugConfiguration.class);
+    PugTemplate template = engine.getTemplate("demo.pug");
     Map<String, Object> params = Collections.emptyMap();
     String result = engine.renderTemplate(template, params);
     String expected = "<html>\n" +
       "  <head>\n" +
-      "    <title>Jade</title>\n" +
+      "    <title>Pug</title>\n" +
       "  </head>\n" +
       "  <body>\n" +
-      "    <h1>Jade - Template engine</h1>\n" +
+      "    <h1>Pug - Template engine</h1>\n" +
       "  </body>\n" +
       "</html>";
     assertEquals(expected, result.trim());
@@ -298,8 +298,8 @@ public class Jade4JAutoConfigurationTests {
 
   @Test(expected = BeanCreationException.class)
   public void templateLocationDoesNotExist() throws Exception {
-    TestPropertyValues.of("spring.jade4j.prefix:classpath:/no-such-directory/").applyTo(context);
-    this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
+    TestPropertyValues.of("spring.pug4j.prefix:classpath:/no-such-directory/").applyTo(context);
+    this.context.register(Pug4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
   }
 
@@ -307,26 +307,26 @@ public class Jade4JAutoConfigurationTests {
   @Ignore
   public void templateLocationEmpty() throws Exception {
     new File("./build/classes/test/templates/empty-directory").mkdir();
-    TestPropertyValues.of("spring.jade4j.prefix:classpath:/templates/empty-directory/").applyTo(context);
-    this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
+    TestPropertyValues.of("spring.pug4j.prefix:classpath:/templates/empty-directory/").applyTo(context);
+    this.context.register(Pug4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     this.context.refresh();
   }
 
   @Test
   public void createLayoutFromConfigClass() throws Exception {
     AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-    context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
+    context.register(Pug4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class);
     MockServletContext servletContext = new MockServletContext();
     context.setServletContext(servletContext);
     context.refresh();
 
-    JadeView view = (JadeView) context.getBean(JadeViewResolver.class).resolveViewName("demo", Locale.UK);
+    PugView view = (PugView) context.getBean(PugViewResolver.class).resolveViewName("demo", Locale.UK);
     MockHttpServletResponse response = new MockHttpServletResponse();
     MockHttpServletRequest request = new MockHttpServletRequest();
     request.setAttribute(RequestContext.WEB_APPLICATION_CONTEXT_ATTRIBUTE, context);
     view.render(params(), request, response);
     String result = response.getContentAsString();
-    assertTrue("Wrong result: " + result, result.contains("<title>Jade</title>"));
+    assertTrue("Wrong result: " + result, result.contains("<title>Pug</title>"));
     assertTrue("Wrong result: " + result, result.contains("<h2>With user</h2>"));
     context.close();
   }
@@ -334,13 +334,13 @@ public class Jade4JAutoConfigurationTests {
 
   @Test
   public void createLayoutFromConfigClass_withHelper() throws Exception {
-    TestPropertyValues.of("spring.jade4j.mode:XHTML").applyTo(context);
-    this.context.register(Jade4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class, TestConfig.class);
+    TestPropertyValues.of("spring.pug4j.mode:XHTML").applyTo(context);
+    this.context.register(Pug4JAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class, TestConfig.class);
     this.context.refresh();
-    JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
-    JadeTemplate template = engine.getTemplate("demo_withHelper.jade");
+    PugConfiguration engine = this.context.getBean(PugConfiguration.class);
+    PugTemplate template = engine.getTemplate("demo_withHelper.pug");
     String result = engine.renderTemplate(template, engine.getSharedVariables());
-    String expected = "<html><head><title>Jade</title></head><body><h1>Jade - Template engine</h1></body></html>";
+    String expected = "<html><head><title>Pug</title></head><body><h1>Pug - Template engine</h1></body></html>";
 
     assertEquals(expected, result);
   }
@@ -350,12 +350,12 @@ public class Jade4JAutoConfigurationTests {
   @Ignore
   public void renderNonWebAppTemplate() throws Exception {
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-      Jade4JAutoConfiguration.class,
+      Pug4JAutoConfiguration.class,
       PropertyPlaceholderAutoConfiguration.class);
     assertEquals(0, context.getBeanNamesForType(ViewResolver.class).length);
     try {
-      JadeConfiguration engine = this.context.getBean(JadeConfiguration.class);
-      JadeTemplate template = engine.getTemplate("demo.jade");
+      PugConfiguration engine = this.context.getBean(PugConfiguration.class);
+      PugTemplate template = engine.getTemplate("demo.pug");
       Map<String, Object> params = params();
       String result = engine.renderTemplate(template, params);
 

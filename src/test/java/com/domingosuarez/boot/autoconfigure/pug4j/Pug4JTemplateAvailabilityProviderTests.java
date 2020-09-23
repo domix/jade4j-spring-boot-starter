@@ -201,16 +201,54 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.domingosuarez.boot.autoconfigure.jade4j.support;
+package com.domingosuarez.boot.autoconfigure.pug4j;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.junit.Test;
+import org.springframework.boot.autoconfigure.template.TemplateAvailabilityProvider;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.mock.env.MockEnvironment;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
- * Created by domix on 12/26/14.
+ * Tests for {@link com.domingosuarez.boot.autoconfigure.pug4j.Pug4JTemplateAvailabilityProvider}.
+ *
+ * @author Domingo Suarez Torres
  */
-@Configuration
-@ComponentScan
-public class TestConfig {
+public class Pug4JTemplateAvailabilityProviderTests {
+  private final TemplateAvailabilityProvider provider = new Pug4JTemplateAvailabilityProvider();
 
+  private final ResourceLoader resourceLoader = new DefaultResourceLoader();
+
+  private final MockEnvironment environment = new MockEnvironment();
+
+  @Test
+  public void availabilityOfTemplateInDefaultLocation() {
+    assertTrue(this.provider.isTemplateAvailable("home", this.environment,
+      getClass().getClassLoader(), this.resourceLoader));
+  }
+
+  @Test
+  public void availabilityOfTemplateThatDoesNotExist() {
+    assertFalse(this.provider.isTemplateAvailable("whatever", this.environment,
+      getClass().getClassLoader(), this.resourceLoader));
+  }
+
+  @Test
+  public void availabilityOfTemplateWithCustomPrefix() {
+    this.environment.setProperty("spring.pug4j.prefix", "classpath:/custom-templates/");
+
+    assertTrue(this.provider.isTemplateAvailable("custom", this.environment,
+      getClass().getClassLoader(), this.resourceLoader));
+  }
+
+  @Test
+  public void availabilityOfTemplateWithCustomSuffix() {
+    this.environment.setProperty("spring.pug4j.suffix", ".pug4j");
+
+    assertTrue(this.provider.isTemplateAvailable("suffixed", this.environment,
+      getClass().getClassLoader(), this.resourceLoader));
+  }
 }

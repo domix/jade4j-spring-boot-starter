@@ -69,8 +69,8 @@ dependencies {
     exclude module: 'commons-logging'
   }
 
-  compile 'de.neuland-bfi:spring-jade4j:1.2.7'
-  compile 'de.neuland-bfi:jade4j:1.2.7'
+  compile 'de.neuland-bfi:spring-pug4j:2.0.0-alpha-2'
+  compile 'de.neuland-bfi:pug4j:2.0.0-alpha-2'
 
   testCompile 'junit:junit'
   testCompile "org.springframework:spring-test"
@@ -124,7 +124,7 @@ jacocoTestReport {
 }
 
 license {
-  excludes(["**/*.jade4j", "**/*.jade", "**/*.factories"])
+  excludes(["**/*.pug4j", "**/*.pug", "**/*.factories"])
   ext.year = Calendar.getInstance().get(Calendar.YEAR)
   ext.name = 'Domingo Suarez Torres'
   ext.email = 'domingo.suarez@gmail.com'
