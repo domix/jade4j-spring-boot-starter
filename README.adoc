@@ -25,15 +25,6 @@ image:https://maven-badges.herokuapp.com/maven-central/com.domingosuarez.boot/ja
 JCenter
 image:https://api.bintray.com/packages/domix/spring-boot/jade4j-spring-boot-starter/images/download.svg["Download", link="https://bintray.com/domix/spring-boot/jade4j-spring-boot-starter/_latestVersion"]
 
-== Issues
-
-image:https://badge.waffle.io/domix/jade4j-spring-boot-starter.svg?label=ready&title=Ready["Stories in Ready", link="http://waffle.io/domix/jade4j-spring-boot-starter"]
-
-
-image:https://graphs.waffle.io/domix/jade4j-spring-boot-starter/throughput.svg["Throughput Graph", link="https://waffle.io/domix/jade4j-spring-boot-starter/metrics"]
-
-
-
 == GitHub, Factoids and Stats
 
 image:https://img.shields.io/github/forks/domix/jade4j-spring-boot-starter.svg?style=flat["Forks", link="https://github.com/domix/jade4j-spring-boot-starter/network"]
