@@ -23,6 +23,11 @@ buildscript {
 }
 
 plugins {
+  id 'java'
+  id 'idea'
+  id 'eclipse'
+  id 'jacoco'
+  id 'maven-publish'
   id "com.jfrog.bintray" version "1.8.5"
   id "com.github.hierynomus.license" version "0.15.0"
   id 'net.researchgate.release' version '2.8.1'
@@ -30,15 +35,6 @@ plugins {
   id 'com.github.kt3k.coveralls' version '2.10.2'
   id "com.github.ben-manes.versions" version "0.33.0"
 }
-
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'jacoco'
-apply plugin: 'com.github.kt3k.coveralls'
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.ben-manes.versions'
 
 repositories {
   jcenter()
